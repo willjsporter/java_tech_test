@@ -1,0 +1,30 @@
+Java Test - (estimated length 1 Hour and 30 minutes)
+The suggested program is Visual Studio code with the Java extensions. 
+Please do not modify the App.java file, only files in the testfiles directory should be modified.
+
+Exercise 1:
+Please implement the distClosestNumbers function to enable it to return the distance between the two closest numbers in the given array.
+E.g. for an array 4,56,34,66 the return value should be 10.
+
+Exercise 2:
+Please implement the returnLongestPalindrome function to find and return the longest substring of a given string that is a palindrome, include multi word palindromes.
+E.g. for string "anna kayak mom racecar sagas" it should return racecar.
+
+Exercise 3:
+Please implement the isNumberPrime method to take any number and check if it is prime, returning a Boolean.
+E.g. for number 12 it should return false
+
+Web Development Test - (suggest limit to 1 Hour and 30 minutes)
+There is a simple framework for a calculator given. Please complete the tasks below to complete it more.
+
+Exercise 1:
+The buttons are currently just moving down the page please implement CSS and HTML changes to move them into a more standard calculator design.
+
+Exercise 2:
+Currently only add and subtract are implemented, please amend the HTML and JS to implement multiply and divide.
+
+Exercise 3:
+The calculator has some extreme limitations, please fix 2 out of three of the below:
+	- Support calculations with numbers with more than one digit
+	- Add a clear or undo button
+	- Implement multiple operator calculations eg 3+5/7 (BODMAS need not be followed just run in typed string order)
