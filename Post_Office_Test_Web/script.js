@@ -58,3 +58,5 @@ function gatherData(dataString) {
 		}
 	})
 }
+
+exports.runOperations = runOperations;
