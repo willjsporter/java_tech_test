@@ -17,4 +17,9 @@ describe('runOperations', function () {
             return runOperations(6, 3, '-').should.eventually.equal(3);
         }
     );
+
+    it('should multiply when operator is *', function () {
+            return runOperations(6, 3, '*').should.eventually.equal(18);
+        }
+    );
 });
