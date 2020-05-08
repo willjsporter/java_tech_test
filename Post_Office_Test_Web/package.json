@@ -1,0 +1,16 @@
+{
+  "name": "java_tech_test",
+  "homepage": "https://github.com/willjsporter/java_tech_test",
+  "devDependencies": {
+    "mocha": "^7.1.2",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willjsporter/java_tech_test"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
