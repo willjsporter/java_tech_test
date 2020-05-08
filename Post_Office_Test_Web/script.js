@@ -32,6 +32,9 @@ function runOperations(numOne, numTwo, operator) {
 				case "*":
 					answer = numOne * numTwo;
 					break;
+				case "/":
+					answer = numOne / numTwo;
+					break;
 			}
 			resolve(answer)
 		} catch(err) {

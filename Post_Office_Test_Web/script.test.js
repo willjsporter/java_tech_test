@@ -22,4 +22,9 @@ describe('runOperations', function () {
             return runOperations(6, 3, '*').should.eventually.equal(18);
         }
     );
+
+    it('should divide when operator is /', function () {
+            return runOperations(6, 3, '/').should.eventually.equal(2);
+        }
+    );
 });
