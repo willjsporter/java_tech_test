@@ -65,4 +65,10 @@ function gatherData(dataString) {
 	})
 }
 
+function clearShowBox() {
+	let showBox = document.getElementById("showBox");
+	showBox.innerHTML = '';
+}
+
 exports.runOperations = runOperations;
+exports.clearShowBox = clearShowBox;

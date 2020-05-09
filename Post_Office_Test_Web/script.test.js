@@ -1,11 +1,19 @@
 'use strict'
 
+var jsdom = require('mocha-jsdom');
+global.document = jsdom({
+    url: "http://localhost"
+});
+
+
+
 var chai = require("chai");
 var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
-var assert = chai.should();
+var should = chai.should();
 
 const runOperations = require('./script.js').runOperations;
+const clearShowBox = require('./script.js').clearShowBox;
 
 describe('runOperations', function () {
     it('should add when operator is +', function () {
@@ -28,3 +36,16 @@ describe('runOperations', function () {
         }
     );
 });
+
+describe('clear button', function () {
+    it('should remove all data from showBox display', function () {
+        var showBox = document.createElement('div');
+        showBox.id = 'showBox';
+        showBox.innerHTML = '1+2';
+        document.body.appendChild(showBox);
+
+        clearShowBox()
+
+        document.getElementById('showBox').innerHTML.should.equal('')
+    })
+})
