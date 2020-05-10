@@ -12,4 +12,10 @@ public class longestPalindromeTest {
         longestPalindrome stringWithoutAPalindrome = new longestPalindrome("No palindromes here");
         assertThat(stringWithoutAPalindrome.returnLongestPalindrome(), is(""));
     }
+
+    @Test
+    public void ifOnlyOnePalindromeInString_shouldReturnThatPalindrome() {
+        longestPalindrome stringWithOnePalindrome = new longestPalindrome("One palindrome in here: abba");
+        assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("abba"));
+    }
 }
