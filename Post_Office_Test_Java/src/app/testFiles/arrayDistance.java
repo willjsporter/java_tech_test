@@ -1,6 +1,8 @@
 package app.testFiles;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class arrayDistance {
 
@@ -13,6 +15,15 @@ public class arrayDistance {
 	// Returns the distance between the two closest numbers.
 	public int distClosestNumbers() {
 		Arrays.sort(testArray);
-		return testArray[1] - testArray[0];
+		ArrayList<Integer> distanceArray = new ArrayList<>();
+
+		for(int i = 0; i < (testArray.length -1); i++) {
+			distanceArray.add(testArray[i + 1] - testArray[i]);
+		}
+
+		return distanceArray.stream()
+			.sorted()
+			.collect(Collectors.toList())
+			.get(0);
 	}
 }
