@@ -1,17 +1,23 @@
 'use strict'
 
-//async added for testing purposes.
-// Shouldn't degrade performance of calculator given that human input can't be as fast as code can run.
-
 async function evaluateData() {
 	let showBox = document.getElementById("showBox");
 	let dataString = showBox.innerHTML;
 
 	dataString = dataString.replace(/\s/g, "");
-	await gatherData(dataString).then((parsedData) => {
-		runOperations(parsedData.numbers[0], parsedData.numbers[1], parsedData.operator).then((answer) => {
-			showBox.textContent = answer;
+	await gatherData(dataString)
+		.then(async (parsedData) => {
+			let value1 = Promise.resolve(parsedData.numbers[0]);
+			for(let i = 0; i < parsedData.operator.length; i ++) {
+				 await value1.then(value => {
+					let operationI = runOperations(value, parsedData.numbers[i+1], parsedData.operator[i]);
+					value1 = new Promise(resolve => resolve(operationI))
+				})
+			}
+			return value1;
 		})
+		.then((answer) => {
+		showBox.textContent = answer;
 	}).catch((err) => console.log(err))
 }
 
@@ -52,12 +58,12 @@ function gatherData(dataString) {
 		try{
 			let parsedData = {
 				numbers: [],
-				operator: ''
+				operator: []
 			};
 			let calculationComponents = dataString.split(/([\+\-\*\/])/);
 			calculationComponents.forEach(component => {
 				if (isNaN(parseInt(component))) {
-					parsedData.operator = component;
+					parsedData.operator.push(component);
 				} else {
 					parsedData.numbers.push(parseInt(component));
 				}

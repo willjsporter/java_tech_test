@@ -80,6 +80,13 @@ describe('evaluateData', function () {
         await evaluateData();
         document.getElementById('showBox').innerHTML.should.equal('60');
     });
+
+    it('can process multiple operations (by order of left to right)', async function () {
+        createShowBox('5*2+14/3-2');
+
+        await evaluateData();
+        document.getElementById('showBox').innerHTML.should.equal('6');
+    });
 });
 
 
