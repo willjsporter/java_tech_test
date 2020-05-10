@@ -31,4 +31,10 @@ public class longestPalindromeTest {
         longestPalindrome stringWithOnePalindrome = new longestPalindrome("Hello olleh but this is longer regnol si siht so the second one wins no 1 on");
         assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("this is longer regnol si siht"));
     }
+
+    @Test
+    public void givenAdjacentPalindromesShouldReturnTheStringOfBothRatherThanJustTheSingleWord() {
+        longestPalindrome stringWithOnePalindrome = new longestPalindrome("Only palindrome is repeated: abba abba");
+        assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("abba abba"));
+    }
 }
