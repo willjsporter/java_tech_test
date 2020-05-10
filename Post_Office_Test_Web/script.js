@@ -1,11 +1,14 @@
 'use strict'
 
-function evaluateData() {
+//async added for testing purposes.
+// Shouldn't degrade performance of calculator given that human input can't be as fast as code can run.
+
+async function evaluateData() {
 	let showBox = document.getElementById("showBox");
 	let dataString = showBox.innerHTML;
 
 	dataString = dataString.replace(/\s/g, "");
-	gatherData(dataString).then((parsedData) => {
+	await gatherData(dataString).then((parsedData) => {
 		runOperations(parsedData.numbers[0], parsedData.numbers[1], parsedData.operator).then((answer) => {
 			showBox.textContent = answer;
 		})
@@ -44,25 +47,26 @@ function runOperations(numOne, numTwo, operator) {
 }
 
 function gatherData(dataString) {
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve, reject) =>
+	{
 		try{
 			let parsedData = {
 				numbers: [],
 				operator: ''
 			};
-			for (let i = 0; i < dataString.length; i++) {
-				let val = parseInt(dataString.charAt(i));
-				if (isNaN(val)) {
-					parsedData.operator = dataString.charAt(i);
+			let calculationComponents = dataString.split(/([\+\-\*\/])/);
+			calculationComponents.forEach(component => {
+				if (isNaN(parseInt(component))) {
+					parsedData.operator = component;
 				} else {
-					parsedData.numbers.push(val);
+					parsedData.numbers.push(parseInt(component));
 				}
-			}
+			});
 			resolve(parsedData);
 		} catch(err) {
 			reject(err);
 		}
-	})
+	});
 }
 
 function clearShowBox() {
@@ -70,5 +74,8 @@ function clearShowBox() {
 	showBox.innerHTML = '';
 }
 
-exports.runOperations = runOperations;
-exports.clearShowBox = clearShowBox;
+module.exports = {
+	runOperations: runOperations,
+	clearShowBox: clearShowBox,
+	evaluateData: evaluateData
+};
