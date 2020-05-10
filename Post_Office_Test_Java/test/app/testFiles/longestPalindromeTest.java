@@ -22,6 +22,13 @@ public class longestPalindromeTest {
     @Test
     public void givenMultipleSingleWordPalindromes_shouldReturnLongest() {
         longestPalindrome stringWithOnePalindrome = new longestPalindrome("Several palindromes in here: abba eddde longestoneenotsegnol a");
-        assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("longestoneenotsegnol"));
+        assertThat(stringWithOnePalindrome
+            .returnLongestPalindrome(), is("longestoneenotsegnol"));
+    }
+
+    @Test
+    public void givenPalindromesThatSpanMultipleWords_shouldReturnLongestTotalSequence() {
+        longestPalindrome stringWithOnePalindrome = new longestPalindrome("Hello olleh but this is longer regnol si siht so the second one wins no 1 on");
+        assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("this is longer regnol si siht"));
     }
 }
