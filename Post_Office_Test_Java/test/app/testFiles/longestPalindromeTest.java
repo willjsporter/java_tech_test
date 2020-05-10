@@ -18,4 +18,10 @@ public class longestPalindromeTest {
         longestPalindrome stringWithOnePalindrome = new longestPalindrome("One palindrome in here: abba");
         assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("abba"));
     }
+
+    @Test
+    public void givenMultipleSingleWordPalindromes_shouldReturnLongest() {
+        longestPalindrome stringWithOnePalindrome = new longestPalindrome("Several palindromes in here: abba eddde longestoneenotsegnol a");
+        assertThat(stringWithOnePalindrome.returnLongestPalindrome(), is("longestoneenotsegnol"));
+    }
 }
