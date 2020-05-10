@@ -2,8 +2,6 @@ package app.testFiles;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class longestPalindrome {
 	public String testData;
@@ -14,12 +12,11 @@ public class longestPalindrome {
 
 	public String returnLongestPalindrome(){
 		final String[] wordsArray = this.testData.split("\\s");
-		List<String> palindromes = Arrays.stream(wordsArray)
-			.filter(this::isPalindrome)
-			.sorted(Comparator.comparingInt(String::length).reversed())
-			.collect(Collectors.toList());
 
-		return palindromes.isEmpty() ? "" : palindromes.get(0);
+		return Arrays.stream(wordsArray)
+			.filter(this::isPalindrome)
+			.max(Comparator.comparingInt(String::length))
+			.orElse("");
 	}
 
 	private boolean isPalindrome(String word) {
